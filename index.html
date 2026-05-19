@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f1e8;
+    --ink: #1a1a1a;
+    --accent: #c8341d;
+    --muted: #6b6b6b;
+    --paper: #ffffff;
+    --line: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Fraunces', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(200, 52, 29, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(26, 26, 26, 0.03) 0%, transparent 50%);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 3rem;
+  }
+
+  .mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .mark .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .hero {
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .lede {
+    font-size: 1.15rem;
+    max-width: 580px;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--bg);
+    transform: translateY(-2px);
+  }
+
+  .btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .viewer-frame {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 8px 8px 0 var(--ink);
+    overflow: hidden;
+    animation: fadeUp 0.8s ease-out 0.2s backwards;
+  }
+
+  .viewer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .viewer-bar .filename {
+    text-transform: uppercase;
+  }
+
+  .viewer-frame iframe {
+    width: 100%;
+    height: 720px;
+    border: none;
+    display: block;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 2rem 1.25rem 3rem; }
+    .viewer-frame { box-shadow: 4px 4px 0 var(--ink); }
+    .viewer-frame iframe { height: 500px; }
+    header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    footer { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="mark"><span class="dot"></span>Published</div>
+      <div class="meta">EST. 2026</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">— Document</div>
+      <h1>The <em>document</em> title goes here.</h1>
+      <p class="lede">
+        A short description of what this document is about. Replace this text with a sentence or two that gives visitors context before they read or download.
+      </p>
+
+      <div class="actions">
+        <a href="mydocument.docx" download class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Download .docx
+        </a>
+        <a href="https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/manasirpatil99-bit/crm-journeys-bob/blob/main/mydocument.docx" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 3h7v7M10 14L21 3M21 14v7H3V3h7"/>
+          </svg>
+          Open in new tab
+        </a>
+      </div>
+    </section>
+
+    <div class="viewer-frame">
+      <div class="viewer-bar">
+        <span class="filename">mydocument.docx</span>
+        <span>Preview</span>
+      </div>
+      <iframe
+        src="https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/manasirpatil99-bit/crm-journeys-bob/blob/main/mydocument.docx"
+        title="Document preview">
+      </iframe>
+    </div>
+
+    <footer>
+      <span>© 2026</span>
+      <span>Hosted on GitHub Pages</span>
+    </footer>
+
+  </div>
+</body>
+</html>
